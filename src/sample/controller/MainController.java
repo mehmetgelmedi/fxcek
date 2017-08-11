@@ -2,12 +2,14 @@ package sample.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.DirectoryChooser;
 import sample.main.Main;
 import sample.utils.JsonAyristir;
+import sample.utils.Mesaj;
 import sample.utils.URLBaglanti;
 
 import java.io.File;
@@ -28,6 +30,9 @@ public class MainController implements Initializable {
 
     @FXML
     private ProgressIndicator progress;
+
+    @FXML
+    private TextArea txtUrl;
 
     private ObservableList<String> sehirler;
     private ObservableList<String> sehir;
@@ -59,19 +64,22 @@ public class MainController implements Initializable {
         //mbox("Test","TEst", Alert.AlertType.INFORMATION);
         baslangic = baslangicTarihi.getValue();
         bitis = bitisTarihi.getValue();
+        String url=txtUrl.getText();
+        System.out.println(url);
         if (sehir != null && baslangic != null && bitis != null && dir != null) {
             if (sehir.size() > 0) {
                 System.out.println(baslangic.toString() + " - " + bitis.toString() + " / " + sehir);
                 if (baslangic.compareTo(bitis) < 1) {
                     System.out.println("baslangic<bitis ya da baslangic=bitis  baslangic.adddays +1");
                     progress.setVisible(true);
-                    new Thread(new URLBaglanti(dir.getAbsolutePath().replace("\\", "/"), baslangic, bitis, sehir, progress)).start();
+                    new Thread(new URLBaglanti(url,dir.getAbsolutePath().replace("\\", "/"), baslangic, bitis, sehir, progress)).start();
                 } else
                     mbox("Uyari", "Tarih araligini yanlis girdiniz.", Alert.AlertType.WARNING);
             } else
                 mbox("Uyari", "Sehir secmediniz.", Alert.AlertType.WARNING);
         } else
             mbox("Uyari", "Bir seyler ters gitti.", Alert.AlertType.WARNING);
+
     }
 
     public void listMouseClick() {

@@ -10,11 +10,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.MainController">
    <children>
-      <DatePicker fx:id="baslangicTarihi" layoutX="63.0" layoutY="29.0" />
-      <DatePicker fx:id="bitisTarihi" layoutX="63.0" layoutY="62.0" />
-      <ListView fx:id="sehirListesi" layoutX="63.0" layoutY="125.0" onMouseClicked="#listMouseClick" prefHeight="200.0" prefWidth="174.0" />
-      <Button fx:id="btnGetir" layoutX="151.0" layoutY="334.0" mnemonicParsing="false" onAction="#btnGetirClick" prefHeight="25.0" prefWidth="86.0" text="Getir" />
-      <Button fx:id="btnKonum" layoutX="63.0" layoutY="94.0" mnemonicParsing="false" onMouseClicked="#btnKonumClick" prefHeight="25.0" prefWidth="174.0" text="Konum sec" />
+      <DatePicker fx:id="baslangicTarihi" layoutX="63.0" layoutY="56.0" />
+      <DatePicker fx:id="bitisTarihi" layoutX="63.0" layoutY="89.0" />
+      <ListView fx:id="sehirListesi" layoutX="63.0" layoutY="152.0" onMouseClicked="#listMouseClick" prefHeight="200.0" prefWidth="174.0" />
+      <Button fx:id="btnGetir" layoutX="151.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnGetirClick" prefHeight="25.0" prefWidth="86.0" text="Getir" />
+      <Button fx:id="btnKonum" layoutX="63.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#btnKonumClick" prefHeight="25.0" prefWidth="174.0" text="Konum sec" />
       <ProgressIndicator fx:id="progress" layoutX="137.0" layoutY="180.0" progress="-1.0" />
+      <TextArea fx:id="txtUrl" layoutX="63.0" layoutY="13.0" prefHeight="25.0" prefWidth="174.0" promptText="url" />
    </children>
 </AnchorPane>

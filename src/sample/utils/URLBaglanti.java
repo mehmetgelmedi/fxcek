@@ -1,5 +1,6 @@
 package sample.utils;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressIndicator;
 
 import java.io.*;
@@ -20,13 +21,15 @@ public class URLBaglanti implements Runnable {
     private LocalDate baslangic,bitis;
     private ObservableList<String> sehir;
     private ProgressIndicator progressIndicator;
+    private String url;
 
-    public URLBaglanti (String konum, LocalDate baslangic, LocalDate bitis, ObservableList<String> sehir, ProgressIndicator progressIndicator){
+    public URLBaglanti (String url, String konum, LocalDate baslangic, LocalDate bitis, ObservableList<String> sehir, ProgressIndicator progressIndicator){
         this.konum=konum;
         this.baslangic=baslangic;
         this.bitis=bitis;
         this.sehir=sehir;
         this.progressIndicator=progressIndicator;
+        this.url=url;
     }
 
     public void get() {
@@ -36,7 +39,7 @@ public class URLBaglanti implements Runnable {
             for (String s : sehir) {
                 //System.out.println(s.toString().toUpperCase());
                 URLConnection baglanti = null;
-                String hedefURL = ".php?export=pdf&type=all&x_start_date_time=" + baslangic.format(formatter).toString() + "&x_end_date_time=" + baslangic.format(formatter).toString() + "&system=" + s.toString().toUpperCase() + "";
+                String hedefURL = url.replace("altsehir", s.toLowerCase().toString()).replaceAll("baslangic", baslangic.format(formatter).toString()).replaceAll("bitis",baslangic.format(formatter).toString()).replaceAll("sehir",s.toUpperCase().toString());
                 System.out.println(hedefURL);
                 try {
                     System.out.println(s +" "+ baslangic +" indirilmeye baslandi.");
